@@ -1,0 +1,13 @@
+{
+  "name": "rewind-socket-io-server",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "express": "latest",
+    "socket.io": "latest"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "debug": "DEBUG=* node index.js"
+  }
+}
