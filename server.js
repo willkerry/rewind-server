@@ -11,7 +11,6 @@ console.log("Socket.io server listening on port 3001");
 io.on("connection", (socket) => {
   socket.on("questions", (msg) => {
     io.emit("questions", msg);
-    console.log(msg);
   });
 });
 

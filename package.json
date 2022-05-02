@@ -6,8 +6,14 @@
     "express": "latest",
     "socket.io": "latest"
   },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-cli": "^6.26.0",
+    "nodemon": "latest"
+  },
   "scripts": {
-    "start": "node index.js",
-    "debug": "DEBUG=* node index.js"
+    "start": "nodemon server.js  --exec babel-node -e js",
+    "debug": "DEBUG=* nodemon server.js"
   }
 }
