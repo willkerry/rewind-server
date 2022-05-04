@@ -1,17 +1,28 @@
 const { Server } = require("socket.io");
 
+let socketUrlString =
+  process.env.NODE_ENV === "production"
+    ? "https://rewind-omega.vercel.app"
+    : "http://localhost:3000";
+
 const io = new Server({
   cors: {
-    origin: "https://rewind-omega.vercel.app",
+    origin: socketUrlString,
   },
 });
 
-console.log("Socket.io server listening on port 3001");
+console.log(`Running in ${process.env.NODE_ENV} mode`);
+console.log("Listening on port 3001");
+console.log(`We will accept connections from ${socketUrlString}`);
 
 io.on("connection", (socket) => {
-  socket.on("questions", (msg) => {
-    io.emit("questions", msg);
-    console.log(msg);
+  socket.on("questions", (question) => {
+    io.emit("questions", question);
+    console.log("IN", new Date(), question.question);
+  });
+  socket.on("speeds", (speed) => {
+    io.emit("speeds", speed);
+    console.log("IN", new Date(), speed);
   });
 });
 

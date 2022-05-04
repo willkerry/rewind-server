@@ -1,8 +1,11 @@
 {
   "name": "rewind-socket-io-server",
   "version": "0.0.1",
+  "source": "server.js",
+  "main": "dist/server.js",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "latest",
     "socket.io": "latest"
   },
@@ -13,7 +16,9 @@
     "nodemon": "latest"
   },
   "scripts": {
-    "start": "nodemon server.js  --exec babel-node -e js",
+    "dev": "nodemon --watch server.js --exec babel-node server.js",
+    "build": "babel server.js -d dist",
+    "start": "npm run build && NODE_ENV=production node dist/server.js",
     "debug": "DEBUG=* nodemon server.js"
   }
 }
